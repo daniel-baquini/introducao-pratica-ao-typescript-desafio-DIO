@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../styles/style.css">
+    <title>Desafio TypeScript - Desafio 2</title>
+</head>
+<body>
+    <nav class="nav">
+        <span class="nav__logo text-preset-600">Desafio TypeScript</span>
+        <div class="nav__links">
+            <a class="nav__link text-preset-400" href="./../index.html">Desafio 1</a>
+            <a class="nav__link nav__link--active text-preset-450">Desafio 2</a>
+            <a class="nav__link text-preset-400" href="./third-challenge.html">Desafio 3</a>
+        </div>
+    </nav>
+    <main class="main">
+        <section class="section">
+            <h1 class="section__h1 text-preset-950">Desafio 2 -  Tipagem de objetos “Person”</h1>
+            <p class="section_paragraph text-preset-400">Similar ao desafio 1, o código JavaScript (representa abaixo) apresenta uma série de objetos com propriedades semelhantes e o objetivo é representar eles em um arquivo TypeScript. Com base nas propriedades apresentadas e no nome das variáveis, entende-se que se trata da descrição de pessoas.</p>
+            <pre class="language-javascript">
+<code><span class="token comment">// Como podemos melhorar o esse código usando TS?</span>
+<span class="token keyword">let </span><span class="token variable-name">pessoa1</span><span class="token operator"> = </span><span class="token punctuation">{ }</span><span class="token operator">;</span>
+<span class="token variable-name">pessoa1</span><span class="token operator">.</span><span class="token variable-name">nome</span><span class="token operator"> = </span><span class="token string">"maria"</span><span class="token operator">;</span>
+<span class="token variable-name">pessoa1</span><span class="token operator">.</span><span class="token variable-name">idade</span><span class="token operator"> = </span><span class="token numeric">29</span><span class="token operator">;</span>
+<span class="token variable-name">pessoa1</span><span class="token operator">.</span><span class="token variable-name">profissao</span><span class="token operator"> = </span><span class="token string">"atriz"</span><span class="token operator">;</span>
+
+<span class="token keyword">let </span><span class="token variable-name">pessoa2</span><span class="token operator"> = </span><span class="token punctuation">{ }</span><span class="token operator">;</span>
+<span class="token variable-name">pessoa2</span><span class="token operator">.</span><span class="token variable-name">nome</span><span class="token operator"> = </span><span class="token string">"roberto"</span><span class="token operator">;</span>
+<span class="token variable-name">pessoa2</span><span class="token operator">.</span><span class="token variable-name">idade</span><span class="token operator"> = </span><span class="token numeric">19</span><span class="token operator">;</span>
+<span class="token variable-name">pessoa2</span><span class="token operator">.</span><span class="token variable-name">profissao</span><span class="token operator"> = </span><span class="token string">"Padeiro"</span><span class="token operator">;</span>
+
+<span class="token keyword">let </span><span class="token variable-name">pessoa3</span><span class="token operator"> = </span><span class="token punctuation">{</span>
+    <span class="token property-name">nome</span><span class="token operator">: </span><span class="token string">"laura"</span><span class="token operator">,</span>
+    <span class="token property-name">idade</span><span class="token operator">: </span><span class="token string">"32"</span><span class="token operator">,</span>
+    <span class="token property-name">profissao</span><span class="token operator">: </span><span class="token string">"Atriz"</span><span class="token operator">,</span>
+<span class="token punctuation">}</span><span class="token operator">;</span>
+
+<span class="token keyword">let </span><span class="token variable-name">pessoa4</span><span class="token operator"> = </span><span class="token punctuation">{</span>
+    <span class="token property-name">nome</span><span class="token operator">: </span><span class="token string">"carlos"</span><span class="token operator">,</span>
+    <span class="token property-name">idade</span><span class="token operator">: </span><span class="token numeric">19</span><span class="token operator">,</span>
+    <span class="token property-name">profissao</span><span class="token operator">: </span><span class="token string">"padeiro"</span><span class="token operator">,</span>
+<span class="token punctuation">}</span><span class="token operator">;</span></code></pre>
+        </section>
+        <section class="section">
+            <h2 class="section__h2 text-preset-600">Implementando interfaces</h2>
+            <p class="section_paragraph text-preset-400">Por se tratar de pessoas, foi criada uma interface chamada “Person”, com as propriedades “age”, “name” e “profession”, com os tipos number, string e string, respectivamente. Os nomes foram trocados para ingles para manter o padrão na linguagem (onde as palavras chave são todas em ingles), o nome das variáveis também foi substituído.</p>
+
+            <pre class="language-javascript">
+<code><span class="token keyword">interface </span><span class="token type">Person</span><span class="token punctuation"> {</span>
+    <span class="token property-name">age</span><span class="token operator">: </span><span class="token type">number</span><span class="token operator">;</span>
+    <span class="token property-name">name</span><span class="token operator">: </span><span class="token type">string</span><span class="token operator">;</span>
+    <span class="token property-name">profession</span><span class="token operator">: </span><span class="token type">string</span><span class="token operator">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let </span><span class="token variable-name">person</span><span class="token operator"> = </span><span class="token punctuation">{ }</span><span class="token as"> as </span><span class="token type">Person</span><span class="token operator">;</span>
+<span class="token variable-name">person</span><span class="token operator">.</span><span class="token variable-name">age</span><span class="token operator"> = </span><span class="token numeric">29</span><span class="token operator">;</span>
+<span class="token variable-name">person</span><span class="token operator">.</span><span class="token variable-name">name</span><span class="token operator"> = </span><span class="token string">"Maria"</span><span class="token operator">;</span>
+<span class="token variable-name">person</span><span class="token operator">.</span><span class="token variable-name">profession</span><span class="token operator"> = </span><span class="token string">"Atriz"</span><span class="token operator">;</span>
+
+<span class="token keyword">let </span><span class="token variable-name">person2</span><span class="token operator"> = </span><span class="token punctuation">{ }</span><span class="token as"> as </span><span class="token type">Person</span><span class="token operator">;</span>
+<span class="token variable-name">person2</span><span class="token operator">.</span><span class="token variable-name">age</span><span class="token operator"> = </span><span class="token numeric">19</span><span class="token operator">;</span>
+<span class="token variable-name">person2</span><span class="token operator">.</span><span class="token variable-name">name</span><span class="token operator"> = </span><span class="token string">"Roberto"</span><span class="token operator">;</span>
+<span class="token variable-name">person2</span><span class="token operator">.</span><span class="token variable-name">profession</span><span class="token operator"> = </span><span class="token string">"Padeiro"</span><span class="token operator">;</span>
+
+<span class="token keyword">let </span><span class="token variable-name">person3</span><span class="token operator">: </span><span class="token type">Person</span> <span class="token operator"> = </span><span class="token punctuation">{</span>
+    <span class="token property-name">age</span><span class="token operator">: </span><span class="token numeric">32</span><span class="token operator">,</span>
+    <span class="token property-name">name</span><span class="token operator">: </span><span class="token string">"Laura"</span><span class="token operator">,</span>
+    <span class="token property-name">profession</span><span class="token operator">: </span><span class="token string">"Atriz"</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let </span><span class="token variable-name">person4</span><span class="token operator">: </span><span class="token type">Person</span> <span class="token operator"> = </span><span class="token punctuation">{</span>
+    <span class="token property-name">age</span><span class="token operator">: </span><span class="token numeric">19</span><span class="token operator">,</span>
+    <span class="token property-name">name</span><span class="token operator">: </span><span class="token string">"Carlos"</span><span class="token operator">,</span>
+    <span class="token property-name">profession</span><span class="token operator">: </span><span class="token string">"Padeiro"</span>
+<span class="token punctuation">}</span></code></pre>
+        </section>
+    </main>
+</body>
+</html>

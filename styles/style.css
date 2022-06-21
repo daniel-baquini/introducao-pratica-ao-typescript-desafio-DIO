@@ -1,0 +1,182 @@
+@import url("./reset.css");
+
+@font-face {
+    font-family: "Gothic A1";
+    font-weight: 400;
+    src: url("./../assets/fonts/GothicA1-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Gothic A1";
+    font-weight: 700;
+    src: url("./../assets/fonts/GothicA1-Bold.ttf");
+}
+
+:root {
+    --c-dark-60: rgba(0, 0, 0, 0.6);
+    --c-dark-80: rgba(0, 0, 0, 0.8);
+    --c-white-10: #FFFFFF;
+    --c-white-20: #FAFAFA;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    min-height: 100%;
+    width: 100%;
+}
+
+html {
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-family: "Gothic A1";
+    gap: 80px;
+    max-width: 1220px;
+    padding: 40px 40px 80px 40px;
+}
+
+.nav {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nav__logo {
+    color: var(--c-dark-80);
+}
+
+.nav__links {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.nav__link {
+    color: var(--c-dark-60);
+    text-decoration: none;
+}
+
+.nav__link--active {
+    color: var(--c-dark-80);
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    max-width: 824px;
+    width: 100%;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.section__h1, .section__h2 {
+    color: var(--c-dark-80);
+}
+
+.section_paragraph {
+    color: var(--c-dark-60);
+}
+
+pre[class*="language-"] {
+    background-color: #1E1E1E;
+    border-radius: 8px;
+    overflow: auto;
+    padding: 16px;
+}
+
+pre[class*="language-"] > code {
+    line-height: 150%;
+}
+
+.token.as {
+    color: #C586C0;
+}
+
+.token.comment {
+    color: #6A9955;
+}
+
+.token.const-name {
+    color: #4FC1FF;
+}
+
+.token.else, .token.for, .token.if, .token.throw, .token.while {
+    color: #C586C0;
+}
+
+.token.function-name {
+    color: #DCDCAA;
+}
+
+.token.keyword {
+    color: #569CD6;
+}
+
+.token.numeric {
+    color: #B5CEA8;
+}
+
+.token.operator {
+    color: #D4D4D4;
+}
+
+.token.parameter-name, .token.property-name, .token.variable-name {
+    color: #9CDCFE;
+}
+
+.token.punctuation {
+    color: #569CD6;
+}
+
+.token.string {
+    color: #D16969;
+}
+
+.token.type {
+    color: #4EC9B0;
+}
+
+.text-preset-300 {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 100%;
+}
+
+.text-preset-400 {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.text-preset-450 {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 150%;
+}
+
+.text-preset-600 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 150%;
+}
+
+.text-preset-950 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 150%;
+}

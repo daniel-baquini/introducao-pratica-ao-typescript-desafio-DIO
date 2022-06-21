@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Desafio TypeScript - Desafio 1</title>
+</head>
+<body>
+    <nav class="nav">
+        <span class="nav__logo text-preset-600">Desafio TypeScript</span>
+        <div class="nav__links">
+            <a class="nav__link nav__link--active text-preset-450">Desafio 1</a>
+            <a class="nav__link text-preset-400" href="./pages/second-challenge.html">Desafio 2</a>
+            <a class="nav__link text-preset-400" href="./pages/third-challenge.html">Desafio 3</a>
+        </div>
+    </nav>
+    <main class="main">
+        <section class="section">
+            <h1 class="section__h1 text-preset-950">Desafio 1 - Tipagem de objetos "Employee"</h1>
+            <p class="section_paragraph text-preset-400">No primeiro desafio, temos um código em JavaScript (representado abaixo) e o objetivo é representar ele em um arquivo TypeScript.</p>
+            <pre class="language-javascript">
+<code><span class="token comment">// Como podemos rodar isso em um arquivo .ts sem causar erros? </span>
+<span class="token keyword">let </span><span class="token variable-name">employee</span><span class="token operator"> = </span><span class="token punctuation">{ }</span><span class="token operator">;</span>
+<span class="token variable-name">employee</span><span class="token operator">.</span><span class="token variable-name">code</span><span class="token operator"> = </span><span class="token numeric">10</span><span class="token operator">;</span>
+<span class="token variable-name">employee</span><span class="token operator">.</span><span class="token variable-name">name</span><span class="token operator"> = </span><span class="token string">"John"</span><span class="token operator">;</span></code></pre>
+        </section>
+        <section class="section">
+            <h2 class="section__h2 text-preset-600">Solução 1: Interfaces</h2>
+            <p class="section_paragraph text-preset-400">A primeira solução possível é definir uma interface “Employee”, contendo as propriedades “code”, do tipo “number e “name” do tipo “string”.</p>
+            <pre class="language-javascript">
+<code><span class="token keyword">interface </span><span class="token type">Employee</span><span class="token punctuation"> {</span>
+    <span class="token property-name">code</span><span class="token operator">: </span><span class="token type">number</span><span class="token operator">;</span>
+    <span class="token property-name">name</span><span class="token operator">: </span><span class="token type">string</span><span class="token operator">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let </span><span class="token variable-name">employee</span><span class="token operator">: </span><span class="token type">Employee</span><span class="token operator"> = </span><span class="token punctuation">{</span>
+    <span class="token property-name">code</span><span class="token operator">: </span><span class="token numeric">10</span><span class="token operator">,</span>
+    <span class="token property-name">name</span><span class="token operator">: </span><span class="token string">"John"</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let </span><span class="token variable-name">employee2</span><span class="token operator"> = </span><span class="token punctuation">{ }</span><span class="token as"> as </span><span class="token type">Employee</span><span class="token operator">;</span>
+<span class="token variable-name">employee2</span><span class="token operator">.</span><span class="token variable-name">code</span><span class="token operator"> = </span><span class="token numeric">10</span><span class="token operator">;</span>
+<span class="token variable-name">employee2</span><span class="token operator">.</span><span class="token variable-name">name</span><span class="token operator"> = </span><span class="token string">"John"</span><span class="token operator">;</span></code></pre>
+        </section>
+        <section class="section">
+            <h2 class="section_h2 text-preset-600">Solução 2: Inline typing</h2>
+            <p class="section_paragraph text-preset-400">Outra solução é utilizar uma tipagem em linha, que é descrever o tipo no momento em que a variável é declarada.</p>
+            <pre class="language-javascript">
+<code><span class="token keyword">let </span><span class="token variable-name">employee</span><span class="token operator">: </span><span class="token punctuation"> { </span><span class="token property-name">code</span><span class="token operator">: </span><span class="token type">number</span><span class="token operator">, </span><span class="token property-name">name</span><span class="token operator">: </span><span class="token type">string</span><span class="token punctuation"> }</span><span class="token operator"> = </span><span class="token punctuation"> {</span>
+    <span class="token property-name">code</span><span class="token operator">: </span><span class="token numeric">10</span><span class="token operator">,</span>
+    <span class="token property-name">name</span><span class="token operator">: </span><span class="token string">"John"</span>
+<span class="token punctuation">}</span></code></pre>
+        </section>
+        <section class="section">
+            <h2 class="section_h2 text-preset-600">Conclusão</h2>
+            <p class="section_paragraph text-preset-400">Dentre as duas soluções, a primeira seria a mais escalável, pois não seria necessário repetir o código de descrição de tipo toda vez que fosse declarar uma variável “Employee”. Entretanto, caso o tipo seja usado uma única vez, não tem problema usar a segunda solução, entretanto, caso seja necessário usar o tipo em mais de um lguar, recomenda-se mudar para a primeira solução.</p>
+        </section>
+    </main>
+</body>
+</html>

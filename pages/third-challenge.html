@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../styles/style.css">
+    <title>Desafio TypeScript - Desafio 3</title>
+</head>
+<body>
+    <nav class="nav">
+        <span class="nav__logo text-preset-600">Desafio TypeScript</span>
+        <div class="nav__links">
+            <a class="nav__link text-preset-400" href="./../index.html">Desafio 1</a>
+            <a class="nav__link text-preset-400" href="./second-challenge.html">Desafio 2</a>
+            <a class="nav__link nav__link--active text-preset-450">Desafio 3</a>
+        </div>
+    </nav>
+    <main class="main">
+        <section class="section">
+            <h1 class="section__h1 text-preset-950">Desafio 3 -  Código que interage com o DOM</h1>
+            <p class="section_paragraph text-preset-400">Neste desafio, temos um código em JavaScript (representado abaixo) que interage com o DOM. O objetivo é tornar o código mais seguro, no sentido de: Aplicar todas as verificações de nulo (para evitar acessar objetos inexistentes) e garantir que os tipos certos são passados para as funções.</p>
+            <pre class="language-javascript">
+<code><span class="token comment">// O código abaixo tem alguns erros e não funciona como deveria. Você pode identificar quais são e corrigi-los em um arquivo TS?</span>
+<span class="token keyword">let </span><span class="token variable-name">botaoAtualizar</span><span class="token operator"> = </span><span class="token variable-name">document</span><span class="token operator">.</span><span class="token function-name">getElementById</span><span class="token operator">(</span><span class="token string">"atualizar-saldo"</span><span class="token operator">);</span>
+<span class="token keyword">let </span><span class="token variable-name">botaoLimpar</span><span class="token operator"> = </span><span class="token variable-name">document</span><span class="token operator">.</span><span class="token function-name">getElementById</span><span class="token operator">(</span><span class="token string">"limpar-saldo"</span><span class="token operator">);</span>
+<span class="token keyword">let </span><span class="token variable-name">soma</span><span class="token operator"> = </span><span class="token variable-name">document</span><span class="token operator">.</span><span class="token function-name">getElementById</span><span class="token operator">(</span><span class="token string">"soma"</span><span class="token operator">);</span>
+<span class="token keyword">let </span><span class="token variable-name">campoSaldo</span><span class="token operator"> = </span><span class="token variable-name">document</span><span class="token operator">.</span><span class="token function-name">getElementById</span><span class="token operator">(</span><span class="token string">"campo-saldo"</span><span class="token operator">);</span>
+
+<span class="token variable-name">campoSaldo</span><span class="token operator">.</span><span class="token variable-name">innerHTML</span><span class="token operator"> = </span><span class="token numeric">0</span><span class="token operator">;</span>
+
+<span class="token keyword">function </span><span class="token function-name">somarAoSaldo</span><span class="token operator">(</span><span class="token parameter-name">soma</span><span class="token operator">) </span><span class="token punctuation">{</span>
+    <span class="token variable-name">campoSaldo</span><span class="token operator">.</span><span class="token variable-name">innerHTML</span><span class="token operator"> += </span><span class="token parameter-name">soma</span><span class="token operator">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function </span><span class="token function-name">limparSaldo</span><span class="token operator">(</span><span class="token operator">) </span><span class="token punctuation">{</span>
+    <span class="token variable-name">campoSaldo</span><span class="token operator">.</span><span class="token variable-name">innerHTML</span><span class="token operator"> = </span><span class="token string">""</span><span class="token operator">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token variable-name">botaoAtualizar</span><span class="token operator">.</span><span class="token function-name">addEventListener</span><span class="token operator">(</span><span class="token string">"click"</span><span class="token operator">, </span><span class="token keyword">function </span><span class="token operator">() </span><span class="token punctuation">{</span>
+    <span class="token function-name">somarAoSaldo</span><span class="token operator">(</span><span class="token variable-name">soma</span><span class="token operator">.</span><span class="token variable-name">value</span><span class="token operator">);</span>
+<span class="token punctuation">}</span><span class="token operator">);</span>
+
+<span class="token variable-name">botaoLimpar</span><span class="token operator">.</span><span class="token function-name">addEventListener</span><span class="token operator">(</span><span class="token string">"click"</span><span class="token operator">, </span><span class="token keyword">function </span><span class="token operator">() </span><span class="token punctuation">{</span>
+    <span class="token function-name">limparSaldo</span><span class="token operator">(</span><span class="token operator">);</span>
+<span class="token punctuation">}</span><span class="token operator">);</span></code></pre>
+        </section>
+        <section class="section">
+            <h2 class="section__h2 text-preset-600">1ª Etapa: Definir o tipo dos elementos HTML</h2>
+            <p class="section_paragraph text-preset-400">Ao selecionar um elemento HTML, ele pode ser nulo (caso o elemento não seja encontrado) ou ser do tipo genérico “HTMLElement”. No contexto deste desafio, o único elemento que é necessário que tenha um tipo mais específico é o elemento “input”.</p>
+            <pre class="language-javascript">
+<code><span class="token keyword">let </span><span class="token variable-name">botaoAtualizar</span><span class="token operator"> = </span><span class="token variable-name">document</span><span class="token operator">.</span><span class="token function-name">getElementById</span><span class="token operator">(</span><span class="token string">"atualizar-saldo"</span><span class="token operator">);</span>
+<span class="token keyword">let </span><span class="token variable-name">botaoLimpar</span><span class="token operator"> = </span><span class="token variable-name">document</span><span class="token operator">.</span><span class="token function-name">getElementById</span><span class="token operator">(</span><span class="token string">"limpar-saldo"</span><span class="token operator">);</span>
+<span class="token keyword">let </span><span class="token variable-name">soma</span><span class="token operator"> = </span><span class="token variable-name">document</span><span class="token operator">.</span><span class="token function-name">getElementById</span><span class="token operator">(</span><span class="token string">"soma"</span><span class="token operator">)</span><span class="token as"> as </span><span class="token type">HTMLInputElement</span><span class="token operator"> | </span><span class="token type">null</span><span class="token operator">;</span>
+<span class="token keyword">let </span><span class="token variable-name">campoSaldo</span><span class="token operator"> = </span><span class="token variable-name">document</span><span class="token operator">.</span><span class="token function-name">getElementById</span><span class="token operator">(</span><span class="token string">"campo-saldo"</span><span class="token operator">);</span></code></pre>
+        </section>
+        <section class="section">
+            <h2 class="section__h2 text-preset-600">2ª Etapa: Inicialização do campo de saldo</h2>
+            <p class="section_paragraph text-preset-400">O campo de saldo pode ou não ser nulo. Para isso, fazemos uma verificação nele previamente. Também adicionados uma mensagem de erro, para facilitar o debug caso a aplicação não se comporte de maneira adequada.</p>
+            <pre class="language-javascript">
+<code><span class="token if">if</span><span class="token operator">(</span><span class="token parameter-name">campoSaldo</span><span class="token operator">) </span><span class="token punctuation">{</span>
+    <span class="token variable-name">campoSaldo</span><span class="token operator">.</span><span class="token variable-name">innerHTML</span><span class="token operator"> = </span><span class="token string">"0"</span><span class="token operator">;</span>
+<span class="token punctuation">}</span>
+<token class="token else">else </token><span class="token punctuation">{</span>
+    <span class="token throw">throw </span><span class="token keyword">new </span><span class="token type">Error</span><span class="token operator">(</span><span class="token string">"O elemento de id 'campo-saldo' não foi encontrado"</span><span class="token operator">);</span>
+<span class="token punctuation">}</span></code></pre>
+        </section>
+        <section class="section">
+            <h2 class="section__h2 text-preset-600">3ª Etapa: Tipagem da função “somarAoSaldo”</h2>
+            <p class="section_paragraph text-preset-400">Essa função recebe um parâmetro de nome “soma”, que é do tipo numérico, e é o valor que deve ser incrementado ao saldo já existente. É necessário transformar o valor do campo de saldo em um tipo numérico antes de fazer a soma, já que o valor de “innerHTML” é sempre uma string.</p>
+            <pre class="language-javascript">
+<code><span class="token keyword">function </span><span class="token function-name">somarAoSaldo</span><span class="token operator">(</span><span class="token parameter-name">soma</span><span class="token operator">: </span><span class="token type">number</span><span class="token operator">) </span><span class="token punctuation">{</span>
+    <span class="token if">if</span><span class="token operator">(</span><span class="token variable-name">campoSaldo</span><span class="token operator">) </span><span class="token punctuation">{</span>
+        <span class="token variable-name">campoSaldo</span><span class="token operator">.</span><span class="token variable-name">innerHTML</span><span class="token operator"> = </span><span class="token string">`</span><span class="token punctuation">${</span><span class="token type">Number</span><span class="token operator">(</span></span><span class="token variable-name">campoSaldo</span><span class="token operator">.</span><span class="token variable-name">innerHTML</span><span class="token operator">)</span><span class="token operator"> + </span><span class="token parameter-name">soma</span><span class="token punctuation">}</span><span class="token string">`</span><span class="token operator">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+        </section>
+        <section class="section">
+            <h2 class="section__h2 text-preset-600">4ª Etapa: Verificação de segurança na função “limparSaldo”</h2>
+            <p class="section_paragraph text-preset-400">Foi adicionada uma verificação para saber se o campo de saldo é nulo ou não.</p>
+            <pre class="language-javascript">
+<code><span class="token keyword">function </span><span class="token function-name">limparSaldo</span><span class="token operator">(</span><span class="token operator">) </span><span class="token punctuation">{</span>
+    <span class="token if">if</span><span class="token operator">(</span><span class="token variable-name">campoSaldo</span><span class="token operator">) </span><span class="token punctuation">{</span>
+        <span class="token variable-name">campoSaldo</span><span class="token operator">.</span><span class="token variable-name">innerHTML</span><span class="token operator"> = </span><span class="token string">""</span><span class="token operator">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+        </section>
+        <section class="section">
+            <h2 class="section__h2 text-preset-600">5ª Etapa: Verificação de segurança dos botões</h2>
+            <p class="section_paragraph text-preset-400">Similar a quarta etapa, aqui foi adicionada uma condicional para os botões (através de optional chaining) e foi adicionado a conversão do tipo string (que é o valor do campo de soma) para o tipo numérico.</p>
+            <p class="section_paragraph text-preset-400">Sabendo que o campo de soma pode ser nulo, foi usado o operador de coalescência nula, que entrega o número 0 caso o campo de soma não exista.</p>
+            <pre class="language-javascript">
+<code><span class="token variable-name">botaoAtualizar</span><span class="token operator">?.</span><span class="token function-name">addEventListener</span><span class="token operator">(</span><span class="token string">"click"</span><span class="token operator">, </span><span class="token keyword">function </span><span class="token operator">() </span><span class="token punctuation">{</span>
+    <span class="token function-name">somarAoSaldo</span><span class="token operator">(</span><span class="token type">Number</span><span class="token operator">(</span><span class="token variable-name">soma</span><span class="token operator">?.</span><span class="token variable-name">value</span><span class="token operator"> ?? </span><span class="token numeric">0</span><span class="token operator">));</span>
+<span class="token punctuation">}</span><span class="token operator">);</span>
+
+<span class="token variable-name">botaoLimpar</span><span class="token operator">?.</span><span class="token function-name">addEventListener</span><span class="token operator">(</span><span class="token string">"click"</span><span class="token operator">, </span><span class="token keyword">function </span><span class="token operator">() </span><span class="token punctuation">{</span>
+    <span class="token function-name">limparSaldo</span><span class="token operator">(</span><span class="token operator">);</span>
+<span class="token punctuation">}</span><span class="token operator">);</span></code></pre>            
+        </section>
+    </main>
+</body>
+</html>
