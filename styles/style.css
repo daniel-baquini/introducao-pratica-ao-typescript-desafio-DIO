@@ -53,6 +53,7 @@ body {
 
 .nav__logo {
     color: var(--c-dark-80);
+    text-align: center;
 }
 
 .nav__links {
@@ -179,4 +180,12 @@ pre[class*="language-"] > code {
     font-size: 2.25rem;
     font-weight: 700;
     line-height: 150%;
+}
+
+@media (max-width: 720px) {
+    .nav {
+        flex-direction: column;
+        gap: 24px;
+        justify-content: center;
+    }
 }
